@@ -9,7 +9,7 @@ package com.barakisbrown;
  */
 public class DiceTypes 
 {
-	private static final int []allowedDice = {3,4,6,8,10,12,20,100};
+	private final int []allowedDice = {3,4,6,8,10,12,20,100};
 	
 	public boolean isAllowed(int dice)
 	{
