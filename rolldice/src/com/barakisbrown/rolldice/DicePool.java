@@ -43,4 +43,15 @@ public class DicePool
 			System.err.println(e.getMessage());
 		}
 	}
+	
+	public void generate()
+	{
+
+		for (Die dice : pool)
+		{
+			dice.rollDie();
+		}
+			
+	}
+	
 }
