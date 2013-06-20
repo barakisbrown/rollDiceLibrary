@@ -9,23 +9,15 @@ package com.barakisbrown;
  */
 public class DiceTypes 
 {
-	private final int []allowedDice = {3,4,6,8,10,12,20,100};
+	private static final int []allowedDice = {3,4,6,8,10,12,20,100};
 	
-	public boolean isAllowed(int dice)
+	public static boolean isAllowed(int dice)
 	{
-		switch (dice)
+		for (int loop=0;loop<allowedDice.length;loop++)
 		{
-		case 3:
-		case 4:
-		case 6:
-		case 8:
-		case 10:
-		case 12:
-		case 20:
-		case 100:
-			return true;
-		default:
-			return false;
+			if (dice == allowedDice[loop])
+				return true;
 		}
+		return false;
 	}
 }
