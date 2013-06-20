@@ -1,5 +1,7 @@
 package com.barakisbrown.rolldice;
 
+import java.util.Random;
+
 
 
 public class Die 
@@ -51,6 +53,14 @@ public class Die
 	public String getDie()
 	{
 		return "D" + i_sides;
+	}
+	
+	public void rollDie()
+	{
+		Random rnd = new Random();
+		
+		i_value = rnd.nextInt(i_sides) + 1;
+		
 	}
 	
 }
