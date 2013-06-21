@@ -10,7 +10,7 @@ public class Die
 	private int i_value;
 
 	
-	public Die(int side,int value) throws Exception
+	public Die(int value,int side) throws Exception
 	{
 		if (DiceTypes.isAllowed(side) == false)
 			throw new Exception("Invalid Dice Type");
