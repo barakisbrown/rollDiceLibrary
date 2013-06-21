@@ -9,6 +9,7 @@ public class DicePool
 	private int numDice;
 	private int total;
 	private int timesRolled;
+	private String diceString;
 	
 	public DicePool()
 	{
@@ -21,13 +22,14 @@ public class DicePool
 	{
 		numDice = number;
 		pool = new ArrayList<Die>();
+		diceString = number + "D" + sides;
 		total = 0;
 		
 		try
 		{
 			for (int loop = 0;loop < numDice;loop++)
 			{
-				pool.add(new Die(number,sides));			
+				pool.add(new Die(1,sides));			
 			}
 		}
 		catch(Exception e)
@@ -40,7 +42,7 @@ public class DicePool
 	{
 		try
 		{
-			Die newDie = new Die(number,sides);
+			Die newDie = new Die(1,sides);
 			pool.add(newDie);
 			
 		}catch(Exception e)
@@ -78,6 +80,6 @@ public class DicePool
 	
 	public String getDiceString()
 	{
-		return numDice + pool.get(0).getDie();
+		return diceString;
 	}
 }
