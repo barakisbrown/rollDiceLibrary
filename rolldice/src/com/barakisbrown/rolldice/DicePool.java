@@ -59,7 +59,13 @@ public class DicePool
 	{
 		for (Die dice : pool)
 		{
-			dice.rollDie();
+			try {
+				dice.rollDie();
+			} catch (Exception e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			total += dice.getvalue();
 		}
 		timesRolled++;
