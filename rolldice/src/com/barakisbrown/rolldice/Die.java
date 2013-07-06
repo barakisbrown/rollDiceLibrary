@@ -55,7 +55,7 @@ public class Die
 		return "D" + i_sides;
 	}
 	
-	public void rollDie()
+	public void rollDie() throws Exception
 	{
 		Random rnd = new Random();
 		
