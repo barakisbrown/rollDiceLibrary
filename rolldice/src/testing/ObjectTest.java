@@ -14,28 +14,30 @@ public class ObjectTest
 		// now lets see if I can now work with them this way
 		if (obj instanceof Die)
 		{
+			Die normal = (Die)obj;
 			try 
 			{
-				((Die) obj).rollDie();
+				normal.rollDie();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("Die Value = " + ((Die)obj).getvalue());
+			System.out.println("Die Value = " + normal.getvalue());
 			
 		}
 		if (obj1 instanceof ExplodedDie)
 		{
+			ExplodedDie exp = (ExplodedDie)obj1;
 			try
 			{
-				((ExplodedDie) obj1).setExplodeTN(6);
-				((ExplodedDie) obj1).rollDie();
+				exp.setExplodeTN(6);
+				exp.rollDie();
 			}catch (Exception e)
 			{
 				e.printStackTrace();
 			}
-			boolean explode = ((ExplodedDie) obj1).didExplode();
-			System.out.println("Die Value = " + ((ExplodedDie) obj1).getvalue());
+			boolean explode = exp.didExplode();
+			System.out.println("Die Value = " + exp.getvalue());
 			System.out.println("Did the die explode? " + explode);
 		}
 	}
