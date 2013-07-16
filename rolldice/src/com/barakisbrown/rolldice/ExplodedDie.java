@@ -5,11 +5,12 @@ public class ExplodedDie extends Die
 	private boolean exploded;
 	private int explode_target_number;
 
-	public ExplodedDie(int value, int side) throws Exception {
+	public ExplodedDie(int value, int side,int TN) throws Exception 
+	{
 		super(value, side);
 		// TODO Auto-generated constructor stub
 		exploded = false;
-		explode_target_number = 0;
+		explode_target_number = TN;
 	}
 
 	public void setExplodeTN(int targetNumber)
