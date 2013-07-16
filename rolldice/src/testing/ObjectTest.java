@@ -59,7 +59,7 @@ public class ObjectTest
 		{
 			try 
 			{
-				obj = new ExplodedDie(2,6);
+				obj = new ExplodedDie(2,6,6);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
