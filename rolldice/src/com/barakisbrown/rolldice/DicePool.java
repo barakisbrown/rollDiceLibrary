@@ -3,89 +3,130 @@ package com.barakisbrown.rolldice;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import testing.DPool2;
+
 public class DicePool 
 {
-	private ArrayList<Die> pool;
-	private int numDice;
-	private int total;
-	private int timesRolled;
+	
+	private int totalRolled;
+	private int numDiceInPool;
+	private int timesPoolRolled;
 	private String diceString;
+	private StringBuilder output;
 	
-	public DicePool()
+	private ArrayList<Object> pool;
+	private boolean Init = false;
+	private static DicePool obj = null;
+	
+	
+	protected DicePool()
 	{
-		pool = new ArrayList<Die>();
-		numDice = 1;
-		total = 0;
+		totalRolled = 0;
+		numDiceInPool = timesPoolRolled = 0;
+		diceString = "";
+		Init = true;
+		output = new StringBuilder();
+		pool = new ArrayList<Object>();
 	}
 	
-	public DicePool(int number,int sides)
+	public static DicePool initPool()
 	{
-		numDice = number;
-		pool = new ArrayList<Die>();
-		diceString = number + "D" + sides;
-		total = 0;
-		
-		try
+		if (obj == null)
 		{
-			for (int loop = 0;loop < numDice;loop++)
-			{
-				pool.add(new Die(1,sides));			
-			}
+			obj = new DicePool();	
 		}
-		catch(Exception e)
-		{
-			System.err.println(e.getMessage());
-		}
+		return obj;
 	}
 	
-	public void addDice(int number,int sides)
+	public boolean isInit() { return Init; }
+	
+	public int getTotalRolled() { return totalRolled; }
+	public int getNumdiceInPool() { return numDiceInPool; }
+	public int getTimesRolled() { return timesPoolRolled; }
+	public String getDiceString() { return diceString; }
+	public String getOutput() { return output.toString(); }
+	
+	public boolean addDice(Object objDie)
 	{
-		try
-		{
-			Die newDie = new Die(1,sides);
-			pool.add(newDie);
-			
-		}catch(Exception e)
-		{
-			System.err.println(e.getMessage());
-		}
-
-		if (numDice != 1)
-			numDice++;
-
+		numDiceInPool++;
+		return pool.add(objDie);
 	}
 	
-	public void generate()
+	public boolean addDice(int times,Object objDie)
 	{
-		for (Die dice : pool)
+		boolean rtnValue = false;
+		numDiceInPool += times;
+		for (int loop = 0;loop < times; loop++)
 		{
-			try {
-				dice.rollDie();
-			} catch (Exception e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			total += dice.getvalue();
+			rtnValue = pool.add(objDie);
 		}
-		timesRolled++;
+		return rtnValue;
 	}
 	
-	public int getTotal()
-	{
-		if (timesRolled == 0)
-			return 0;
-		else
-			return total;
-	}
-	
-	public Iterator<Die> getDice()
+	public Iterator<Object> getPool()
 	{
 		return pool.iterator();
 	}
+
 	
-	public String getDiceString()
+	public void generate()
 	{
-		return diceString;
+		int value;
+		for (Object obj : pool)
+		{
+			if (obj instanceof ExplodedDie)
+			{
+				ExplodedDie explode = (ExplodedDie)obj;
+				boolean repeat = false;
+				try
+				{
+					explode.rollDie();
+					value = explode.getvalue();
+					totalRolled += value;
+					output.append(value).append(" ");
+					// only if does explode is true
+					if (explode.didExplode())
+					{
+						do
+						{
+							int side = explode.getSide();
+							int TN = side;
+							numDiceInPool++;
+							ExplodedDie die = new ExplodedDie(1,side,TN);
+							die.rollDie();
+							repeat = die.didExplode();
+							value = die.getvalue();
+							totalRolled += value;
+							output.append(value).append(" ");
+						}while(repeat);
+					}
+					
+				}
+				catch(Exception e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
+				
+			}
+			else if (obj instanceof Die)
+			{
+				Die simple = (Die)obj;
+				try
+				{
+					simple.rollDie();
+					value = simple.getvalue();
+					totalRolled += value;
+					output.append(simple).append(" ");
+				}
+				catch(Exception e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		timesPoolRolled++;
 	}
+
 }
