@@ -1,9 +1,8 @@
-The RollDice Application
+The RollDice Library
 ------------------------
 
 About:
-This is my android port of idea I had a long time using MFC back during WinXP area.
-I have updated it using .NET but I wanted to create a Android Application for this also.
+This will be library that I could use on any of my .NET apps. This library will helpe me learn more about Test-Driven Development.
 
 Overall Objectives for this application
 ---------------------------------------
@@ -18,3 +17,5 @@ Overall Objectives for this application
 	  2D6+4 = 11 [4 3]
 	  8d6 = [1 6 3 5 4 4 5 2] = 30
 4. Customization [Name]
+
+
