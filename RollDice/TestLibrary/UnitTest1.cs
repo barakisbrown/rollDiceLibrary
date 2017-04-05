@@ -13,10 +13,23 @@ namespace TestLibrary
 		[InlineData(22,DiceUtilities.Dice_Types.D100)]
 		[InlineData(2,DiceUtilities.Dice_Types.D3)]
 		[InlineData(1,DiceUtilities.Dice_Types.D2)]
-		[InlineData(10,25)]
 		public void Test1(int actual,DiceUtilities.Dice_Types rolled)
+		{
+		    var n = RollDice.Roll(rolled);
+		    Assert.InRange(n, 1, (int) rolled);
+		}
+
+        [Theory]
+        [InlineData(6,DiceUtilities.Dice_Types.D6)]
+        [InlineData(4, DiceUtilities.Dice_Types.D8)]
+        [InlineData(10, DiceUtilities.Dice_Types.D10)]
+        [InlineData(0,DiceUtilities.Dice_Types.D4)]
+        public void AddMultipliDiceTogether(int number, DiceUtilities.Dice_Types whichTypes)
         {
-			Assert.InRange(actual, 1, (int)rolled);
+            var min = (number == 0) ? 1 : number;
+            var max = number * (int) whichTypes;
+            var rolled = RollDice.Roll(number, whichTypes);
+            Assert.InRange(rolled, min, max);
         }
     }
 }
