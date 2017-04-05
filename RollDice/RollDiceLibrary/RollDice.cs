@@ -5,10 +5,11 @@ namespace RollDiceLibrary
 {
 	public class RollDice
 	{
-		public static int roll(DiceUtilities.Dice_Types D)
+		public static int Roll(DiceUtilities.Dice_Types D)
 		{
 			switch (D)
 			{
+                case DiceUtilities.Dice_Types.None:
 				case DiceUtilities.Dice_Types.D2:
 				case DiceUtilities.Dice_Types.D3:
 				case DiceUtilities.Dice_Types.D4:
@@ -27,7 +28,6 @@ namespace RollDiceLibrary
 			var rand = new Random();
 			var rolled = (int)D + 1;
 			var n = rand.Next(1, rolled);
-			Console.WriteLine("Rolled {0}", n);
 			return n;
 		}
 	}
