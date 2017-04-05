@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollDiceLibrary", "RollDiceLibrary\RollDiceLibrary.csproj", "{8B87C519-B3C0-42AD-B583-E78491F9A1D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLibrary", "TestLibrary\TestLibrary.csproj", "{D9A24B06-55E0-4745-AAA4-6DA9212F320E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B87C519-B3C0-42AD-B583-E78491F9A1D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B87C519-B3C0-42AD-B583-E78491F9A1D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B87C519-B3C0-42AD-B583-E78491F9A1D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B87C519-B3C0-42AD-B583-E78491F9A1D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9A24B06-55E0-4745-AAA4-6DA9212F320E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9A24B06-55E0-4745-AAA4-6DA9212F320E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9A24B06-55E0-4745-AAA4-6DA9212F320E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9A24B06-55E0-4745-AAA4-6DA9212F320E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
